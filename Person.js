@@ -23,6 +23,18 @@ class Person extends GameObject {
         }
     }
 
+    startBehavior(state, behavior) {
+        this.direction = behavior.direction;
+        if(behavior.type === "walk") {
+            if(state.map.isSpaceTaken(this.x, this.y, this.direction)) {
+                return;
+            }
+            state.map.moveWall(this.x, this.y, this.direction);
+            this.movingProgressRemaining = 16;
+            
+        }
+    }
+
     updatePosition() {
         if(this.movingProgressRemaining > 0) {
             const [property, change] = this.directionUpdate[this.direction];
