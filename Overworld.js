@@ -12,12 +12,17 @@ class Overworld {
 
             const cameraPerson = this.map.gameObjects.hero;
 
+             Object.values(this.map.gameObjects).forEach(object => {
+                object.update({
+                    arrow: this.directionInput.direction,
+                    map: this.map,
+                });
+            })
+
             this.map.drawLowerImage(this.ctx, cameraPerson);
 
             Object.values(this.map.gameObjects).forEach(object => {
-                object.update({
-                    arrow: this.directionInput.direction
-                });
+                
                 object.sprite.draw(this.ctx, cameraPerson);
             })
 
@@ -32,6 +37,7 @@ class Overworld {
 
     init() {
        this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
+       this.map.mountObjects();
 
        this.directionInput = new DirectionInput();
        this.directionInput.init();
