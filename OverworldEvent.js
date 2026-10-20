@@ -43,7 +43,7 @@ class OverworldEvent {
     }
 
     init() {
-        return new Promisse(resolve => {
+        return new Promise(resolve => {
             this[this.event.type](resolve);
         })
     }

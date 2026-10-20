@@ -18,11 +18,11 @@ class GameObject {
         console.log("mounting");
         this.isMounted = true;
         map.addWall(this.x, this.y);
-    }
 
-    setTimeOut(() => {
-        this.doBehaviorEvent(map);
-    }, 10);
+        setTimeout(() => {
+            this.doBehaviorEvent(map);
+        }, 10);
+    }
 
     update() {
         
