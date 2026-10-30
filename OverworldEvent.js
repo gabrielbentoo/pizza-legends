@@ -48,7 +48,7 @@ class OverworldEvent {
             obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
         }
 
-        const message = new this.textMessage({
+        const message = new TextMessage({
             text: this.event.text,
             onComplete: () => resolve()
         })
@@ -57,7 +57,7 @@ class OverworldEvent {
     }
 
     changeMap(resolve) {
-        this.map.overworld.startMap(window.overworldMaps[this.event.map]);\
+        this.map.overworld.startMap(window.OverworldMaps[this.event.map]);
         resolve();
     }
 

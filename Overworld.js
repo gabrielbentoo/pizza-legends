@@ -58,7 +58,7 @@ class Overworld {
     }
 
     init() {
-        this.startMap(window.OverworldMaps.DemoRoom);
+        this.startMap(window.OverworldMaps.Kitchen);
         this.bindActionInput();
         this.bindHeroPositionCheck();
 
@@ -67,13 +67,9 @@ class Overworld {
 
         this.startGameLoop();
 
-       /* this.map.startCutscene([
-            {who: "hero", type: "walk", direction: "down"},
-            {who: "hero", type: "walk", direction: "down"},
-            {who: "npcA", type: "walk", direction: "left"},
-            {who: "npcA", type: "walk", direction: "left"},
-            {who: "npcA", type: "stand", direction: "up", time: 800}
-        ]) */
+        this.map.startCutscene([
+            {type: "textMessage", text: "Essa é a primeira mensagem"}
+        ]) 
     }
 
 }
