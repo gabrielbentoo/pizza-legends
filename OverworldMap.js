@@ -32,7 +32,7 @@ class OverworldMap {
 
     isSpaceTaken(currentX, currentY, direction) {
         const {x, y} = utils.nextPosition(currentX, currentY, direction);
-        return this.walls[`${x}, ${y}`] || false;
+        return this.walls[`${x},${y}`] || false;
     } 
 
     mountObjects() {
@@ -72,7 +72,7 @@ class OverworldMap {
 
     checkForFootstepCutscene() {
         const hero = this.gameObjects["hero"];
-        const match = this.cutsceneSpaces[`${hero.x}, ${hero.y}`];
+        const match = this.cutsceneSpaces[`${hero.x},${hero.y}`];
 
         if(!this.isCutscenePlaying && match) {
             this.startCutscene(match[0].events);
@@ -80,11 +80,11 @@ class OverworldMap {
     }
 
     addWall(x, y) {
-        this.walls[`${x}, ${y}`] || true;
+        this.walls[`${x},${y}`] = true;
     }
 
     removeWall(x, y) {
-        delete this.walls[`${x}, ${y}`];
+        delete this.walls[`${x},${y}`];
     }
 
     moveWall(wasX, wasY, direction) {
@@ -127,8 +127,8 @@ window.OverworldMaps = {
             }),
 
             npcB: new Person({
-                x: utils.withGrid(3),
-                y: utils.withGrid(7),
+                x: utils.withGrid(8),
+                y: utils.withGrid(5),
                 src: "/images/characters/people/npc2.png",
               /*  behaviorLoop: [
                     { type: "walk", direction: "left"},
@@ -183,8 +183,11 @@ window.OverworldMaps = {
                 x: utils.withGrid(10),
                 y: utils.withGrid(8),
                 src: "/images/characters/people/npc3.png",
-                talking: [
-                    {type:"textMessage", text:"Voce conseguiu!", faceHero: "npcB"}
+                talking: [ {
+                    events: [
+                        {type:"textMessage", text:"Voce conseguiu!", faceHero: "npcB"}
+                    ]
+                }   
                 ]
             })
         }

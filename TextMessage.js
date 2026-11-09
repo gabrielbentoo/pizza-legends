@@ -10,11 +10,11 @@ class TextMessage {
         this.element.classList.add("TextMessage");
 
         this.element.innerHTML = (`
-            <p class="TextMessage_p">${this.text}</p>
+            <p class="TextMessage_p"></p>
             <button class="TextMessage_button">proximo</button>
         `)
 
-        this.revealingText = nem RevealingText({
+        this.revealingText = new RevealingText({
             element: this.element.querySelector(".TextMessage_p"),
             text: this.text
         })

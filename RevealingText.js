@@ -11,7 +11,7 @@ class RevealingText {
         const next = list.splice(0,1)[0];
         next.span.classList.add("revealed");
 
-        if(list.lenght > 0) {
+        if(list.length > 0) {
             this.timeout = setTimeout(() => {
                 this.revealOneCharacter(list);
             }, next.delayAfter);
@@ -31,9 +31,9 @@ class RevealingText {
 
     init() {
         let characters = [];
-        this.text.split("").forEach(characters => {
+        this.text.split("").forEach(character => {
             let span = document.createElement("span");
-            span.textContent = characters;
+            span.textContent = character;
             this.element.appendChild(span);
             characters.push({
                 span,
